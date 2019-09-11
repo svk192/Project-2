@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // load login
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/homepage.html"));
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   // load homepage
