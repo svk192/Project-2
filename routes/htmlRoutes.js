@@ -1,9 +1,18 @@
 var db = require("../models");
 
 module.exports = function(app) {
-//   Load login page
+  // Each of the below routes just handles the HTML page that the user gets sent to.
+  //signup page
+  // app.get("/", function(req, res) {
+  //   //res.send("Welcome to Passport with Sequelize");
+  //   //res.sendFile(path.join(__dirname, "../SignUp.hbs"));
+  //   res.render("SignUp");
+  // });
+
+  //load login
   app.get("/", function(req, res) {
-    res.render("index");
+    //res.send("Welcome to Passport with Sequelize");
+    res.render("SignIn");
   });
 //   app.get("/", function(req, res) {
 //     db.Example.findAll({}).then(function(dbExamples) {

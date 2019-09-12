@@ -35,23 +35,22 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-//Models
-var models = require("./models");
-
 // Express static assets
 app.use(express.static("public"));
 
 // Routes
-var authRoute = require("./routes/auth")(app);
+// var authRoute = require("./routes/auth")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-//load passport strategies
-require("./app/config")(passport, models.user);
+// require("./config");
+
+//Models
+var models = require("./models");
 
 //Sync Database
 models.sequelize
-  .sync()
+  .sync({force: true})
   .then(function() {
     console.log("Nice! Database looks fine");
   })
@@ -60,7 +59,7 @@ models.sequelize
   });
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
+if (process.env.NODE_ENV === "development") {
   syncOptions.force = true;
 }
 app.listen(PORT, function(err) {
