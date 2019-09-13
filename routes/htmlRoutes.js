@@ -30,16 +30,16 @@ module.exports = function(app) {
 
   // Load top rated page
   app.get("/top-rated", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("results", {
-        example: dbExample
-      });
-    });
+    // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+      res.render("results");
+    //     example: dbExample
+    //   });
+    // });
   });
 
   // load rate page 
   app.get("/lookup", function(req, res) {
-    res.render("submit");
+    res.render("lookup");
   });
 
   app.get("/rate", function(req, res) {
