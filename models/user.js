@@ -1,26 +1,32 @@
-//const bcrypt = require("bcryptjs");
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    user_ID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true
+  var user = sequelize.define(
+    "user",
+    {
+      user_ID: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true
+        }
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false
+      }
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  });
-
-  User.associate = function(models) {
-    User.hasMany(models.userBook);
+    { freezeTableName: true, timestamps: false }
+  );
+  user.associate = function(models) {
+    user.hasMany(models.userBook);
   };
-
-  return User;
-};
+  return user;
+ };
