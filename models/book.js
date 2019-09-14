@@ -3,7 +3,8 @@ module.exports = function(sequelize, DataTypes) {
     book_Id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true
     },
     title: {
       type: DataTypes.STRING,
@@ -14,14 +15,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     ISBN_type: {
       type: DataTypes.STRING
     },
     ISBN_ID: {
-      type: DataTypes.INTEGER
+      type: DataTypes.FLOAT
     },
     pageCount: {
       type: DataTypes.INTEGER,
@@ -40,9 +41,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     APIID: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     }
+  }, {
+    timestamps: false
   });
 
   Book.associate = function(models) {
