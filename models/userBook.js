@@ -5,22 +5,16 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
-    },
-    userID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    BookID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
     }
-  });
+  }, { timestamps: false });
   //Check association
   userBook.associate = function(models) {
-    userBook.belongsTo(models.User, {
+    userBook.belongsTo(models.user, {
+      foreignKey: { allowNull: false }
+    });
+    userBook.belongsTo(models.Book, {
       foreignKey: { allowNull: false }
     });
   };
-
   return userBook;
-};
+ };

@@ -1,4 +1,5 @@
 var db = require("../models");
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
@@ -6,8 +7,9 @@ var app = express();
 app.use(express.urlencoded());
 var axios = require("axios");
 app.use(bodyParser.urlencoded({ extended: false }));
-
+var sequelize = require("sequelize");
 // import axios from 'axios';
+
 
 module.exports = function(app) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
@@ -23,6 +25,7 @@ module.exports = function(app) {
     //res.send("Welcome to Passport with Sequelize");
     res.render("SignIn");
   });
+
   //   app.get("/", function(req, res) {
   //     db.Example.findAll({}).then(function(dbExamples) {
   //       res.render("index", {
@@ -33,20 +36,27 @@ module.exports = function(app) {
   //   });
 
   // load index page
+
   app.get("/welcome", function(req, res) {
     res.render("index");
   });
 
-  // Load top rated page
+  // Load top rated page - database call required 
   app.get("/top-rated", function(req, res) {
+
     // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-    res.render("results");
-    //     example: dbExample
-    //   });
-    // });
+
+      axios
+      .get('http://localhost:3000/topTest')
+      .then(foundBooks => {console.log(foundBooks.data[0].Count)
+        res.render('results', {books: foundBooks.data[0]})})
+      .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
+    // res.render('index');
   });
 
-  // load rate page
+
+  // load rate page 
+
   app.get("/lookup", function(req, res) {
     res.render("lookup");
   });
@@ -83,8 +93,11 @@ module.exports = function(app) {
       });
   });
 
+  // load results page - database call required
   app.get("/rate", function(req, res) {
+
     res.render("rate");
+
   });
 
   // Render 404 page for any unmatched routes
@@ -92,3 +105,10 @@ module.exports = function(app) {
     res.render("404");
   });
 };
+
+getBook: function() {
+  return $.ajax({
+    url: "/topTest",
+    type: "GET"
+  });
+}
