@@ -43,17 +43,15 @@ module.exports = function(app) {
 
   // Load top rated page - database call required 
   app.get("/top-rated", function(req, res) {
-
     // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
 
       axios
       .get('http://localhost:3000/topTest')
-      .then(foundBooks => {console.log(foundBooks.data[0].Count)
-        res.render('results', {books: foundBooks.data[0]})})
+      .then(foundBooks => {console.log(foundBooks.data)
+        res.render('results', {books: foundBooks.data})})
       .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
     // res.render('index');
   });
-
 
   // load rate page 
 
@@ -83,11 +81,9 @@ module.exports = function(app) {
         //   console.log("description:" + books[i].volumeInfo.description);
         //   console.log("image:" + books[i].volumeInfo.imageLinks.smallThumbnail);
 
-        res.render("results", {
-          bookTitle: title,
-          bookAuthor: author,
-          bookPlot: plot,
-          imageURL: image
+        console.log(books)
+        res.render("searchResults", {
+          books
         });
         // }
       });
@@ -105,10 +101,3 @@ module.exports = function(app) {
     res.render("404");
   });
 };
-
-getBook: function() {
-  return $.ajax({
-    url: "/topTest",
-    type: "GET"
-  });
-}

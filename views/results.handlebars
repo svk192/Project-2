@@ -3,13 +3,14 @@
    <ul>
      {{#each books}}
      <li>
-       <h2>{{title}}</h2>
-       <h3>author: {{author}}</h3>
-       <p>description: {{description}}</p>
-       <p>isbn_type: {{ISBN_type}}</p>
-       <p>isbn_id: {{ISBN_ID}}</p>
-       <p>page count: {{pageCount}}</p>
-       <p>category: {{category}}</p>
+       <h2>{{this.Book.title}}</h2>
+       <h3>Votes: {{this.Count}}</h3>
+       <h3>author: {{this.Book.author}}</h3>
+       <p>description: {{this.Book.description}}</p>
+       <p>isbn_type: {{this.Book.ISBN_type}}</p>
+       <p>isbn_id: {{this.Book.ISBN_ID}}</p>
+       <p>page count: {{this.Book.pageCount}}</p>
+       <p>category: {{this.Book.category}}</p>
      </li>
      {{/each}}
    </ul>
