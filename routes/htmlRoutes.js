@@ -25,13 +25,14 @@ module.exports = function(app) {
 //     // });
 //   });
 
-// load index page
+// load index page - no database call required
   app.get("/welcome", function(req, res) {
     res.render("index");
   });
 
-  // Load top rated page
+  // Load top rated page - database call required 
   app.get("/top-rated", function(req, res) {
+
     // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       axios
       .get('http://localhost:3000/topTest')
@@ -47,12 +48,20 @@ module.exports = function(app) {
     res.render("lookup");
   });
 
+  // load results page - database call required
   app.get("/rate", function(req, res) {
-    
-  })
+    res.redner("results");
+  });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
 };
+
+getBook: function() {
+  return $.ajax({
+    url: "/topTest",
+    type: "GET"
+  });
+}
