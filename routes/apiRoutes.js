@@ -1,5 +1,5 @@
 var db = require("../models");
-var sequelize = require("sequelize")
+var sequelize = require("sequelize");
 
 module.exports = function(app) {
   // Get all examples
@@ -17,19 +17,25 @@ module.exports = function(app) {
   });
 
   app.get("/topTest", function(req, res) {
-  db.userBook.findAll({
-   include: [
-     {
-       model: db.Book,
-       required: true
-     }],
-    group: ["BookBookID"],
-    attributes: ["BookBookID", [sequelize.fn("COUNT", "BookBookID"), "Count"]]
-  }).then(function(UserBook) {
-    console.log(UserBook);
-    res.json(UserBook);
+    db.userBook
+      .findAll({
+        include: [
+          {
+            model: db.Book,
+            required: true
+          }
+        ],
+        group: ["BookBookID"],
+        attributes: [
+          "BookBookID",
+          [sequelize.fn("COUNT", "BookBookID"), "Count"]
+        ]
+      })
+      .then(function(UserBook) {
+        console.log("TopTest works");
+        res.json(UserBook);
+      });
   });
-});
 
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
