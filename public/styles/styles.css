@@ -1,3 +1,67 @@
-.list-group-item {
+/* .list-group-item {
   line-height: 2.5;
+} */
+
+body {
+  /* background-color: red; */
+  background-image: url("../images/book2.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-image-repeat: no-repeat;
+}
+
+#welcome {
+  padding-top: 15%;
+  width: 75%;
+}
+
+#home-buttons {
+  margin-right: 50%;
+}
+
+#button1 {
+  border-radius: 25%;
+  padding: 8%;
+  width: 80%;
+  background-color: #10083F;
+}
+
+#button2 {
+  border-radius: 25%;
+  padding: 8%;
+  width: 80%;
+  background-color: #10083F;
+}
+
+a {
+  color: white;
+  font-family:'Fredericka the Great', cursive;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+h1 {
+  font-family:'Fredericka the Great', cursive;
+  font-size: 5rem;
+}
+
+h2 {
+  font-family:'Fredericka the Great', cursive;
+  font-size: 3rem;
+  padding-top: 5%;
+}
+
+#lookup-form {
+  width: 80%;
+  margin-top: 2%;
+  margin-left: 18%;
+}
+
+label {
+  margin-right: 1%;
 }
