@@ -1,11 +1,9 @@
-//const bcrypt = require("bcryptjs");
 module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define(
     "user",
     {
       user_ID: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         autoIncrement: true,
         primaryKey: true
       },
@@ -27,7 +25,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     { freezeTableName: true, timestamps: false }
   );
-
   user.associate = function(models) {
     user.hasMany(models.userBook);
   };

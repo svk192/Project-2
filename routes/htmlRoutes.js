@@ -23,29 +23,39 @@ module.exports = function(app) {
 //     // });
 //   });
 
-// load index page
+// load index page - no database call required
   app.get("/welcome", function(req, res) {
     res.render("index");
   });
 
-  // Load top rated page
+  // Load top rated page - database call required 
   app.get("/top-rated", function(req, res) {
-    // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("results");
-    //     example: dbExample
-    //   });
-    // });
+    getBook().then(function(response) {
+      console.log(response)
+    })
+      res.render("results", );
+  
   });
 
-  // load rate page
+  // load lookup page - no database call required
   app.get("/lookup", function(req, res) {
     res.render("lookup");
   });
 
-  app.get("/rate", function(req, res) {});
+  // load results page - database call required
+  app.get("/rate", function(req, res) {
+    res.redner("results");
+  });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
 };
+
+getBook: function() {
+  return $.ajax({
+    url: "/topTest",
+    type: "GET"
+  });
+}
