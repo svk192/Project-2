@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "Bl00d0rang3!",
     "database": "Book_wars",
     "host": "localhost",
     "dialect": "mysql"

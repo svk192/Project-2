@@ -35,8 +35,8 @@ module.exports = function(app) {
     // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       axios
       .get('http://localhost:3000/topTest')
-      .then(foundBooks => {console.log(foundBooks.data[0].Count)
-        res.render('results', {books: foundBooks.data[0]})})
+      .then(foundBooks => {console.log(foundBooks.data)
+        res.render('results', {books: foundBooks.data})})
       .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
     // res.render('index');
   });
