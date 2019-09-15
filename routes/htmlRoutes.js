@@ -1,4 +1,6 @@
 var db = require("../models");
+var sequelize = require("sequelize");
+var axios = require("axios")
 
 module.exports = function(app) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
@@ -30,14 +32,18 @@ module.exports = function(app) {
 
   // Load top rated page - database call required 
   app.get("/top-rated", function(req, res) {
-    getBook().then(function(response) {
-      console.log(response)
-    })
-      res.render("results", );
-  
+
+    // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+      axios
+      .get('http://localhost:3000/topTest')
+      .then(foundBooks => {console.log(foundBooks.data[0].Count)
+        res.render('results', {books: foundBooks.data[0]})})
+      .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
+    // res.render('index');
   });
 
-  // load lookup page - no database call required
+
+  // load rate page 
   app.get("/lookup", function(req, res) {
     res.render("lookup");
   });
