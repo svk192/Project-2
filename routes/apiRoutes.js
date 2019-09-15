@@ -16,6 +16,21 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/topTest", function(req, res) {
+  db.userBook.findAll({
+   include: [
+     {
+       model: db.Book,
+       required: true
+     }],
+    group: ["BookBookID"],
+    attributes: ["BookBookID", [sequelize.fn("COUNT", "BookBookID"), "Count"]]
+  }).then(function(UserBook) {
+    console.log(UserBook);
+    res.json(UserBook);
+  });
+});
+
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
     db.book.destroy({ where: { id: req.params.id } }).then(function(
