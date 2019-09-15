@@ -44,6 +44,7 @@ module.exports = function(app) {
   // Load top rated page - database call required 
   app.get("/top-rated", function(req, res) {
     // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+
       axios
       .get('http://localhost:3000/topTest')
       .then(foundBooks => {console.log(foundBooks.data)
@@ -79,6 +80,7 @@ module.exports = function(app) {
         //   console.log("authors:" + books[i].volumeInfo.authors);
         //   console.log("description:" + books[i].volumeInfo.description);
         //   console.log("image:" + books[i].volumeInfo.imageLinks.smallThumbnail);
+
         console.log(books)
         res.render("searchResults", {
           books
