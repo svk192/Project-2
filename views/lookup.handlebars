@@ -1,20 +1,14 @@
-<div class="container d-flex justify-content-center">
-    <h2>Book Lookup</h2>
-</div>
-<div id="lookup-form">
-    <form>
-        <div class="form-group row">
-            <label for="inputAuthor" class="col-sm-2 col-form-label">Author</label>
-            <div class="col-sm-10">
-                <input type="author" class="form-control" id="inputAuthor" placeholder="Margaret Atwood">
-            </div>
-        </div>
+<div class="container">
+    <form  action="/results" method ="POST">
+     
+
         <div class="form-group row">
             <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
             <div class="col-sm-10">
-                <input type="title" class="form-control" id="inputTitle" placeholder="The Handmaid's Tale">
+                <input type="text" class="form-control" id = "inputTitle"  placeholder="The Handmaid's Tale" name="title">
             </div>
         </div>
+        <button type="submit" class="btn btn-primary" id="addBook">Submit</button>
     </form>
-    <button type="submit" class="btn btn-primary" id="addBook">Submit</button>
-</div>
+    
+</div>  

@@ -1,0 +1,21 @@
+<div class="container"> 
+           {{#each books}}  
+          <div class="card">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <img src="{{this.volumeInfo.imageLinks.thumbnail}}" class="img-fluid" alt="" style="width:250px;height:300px">
+            </div>
+            <div class="col"> 
+                <div class="card-block px-2">
+                    <h5 class="bookTitle">{{this.volumeInfo.title}}</h5>
+                    <h6 class="bookAuthor">{{this.volumeInfo.authors}}</h6>
+                    <p class="bookPlot">{{this.volumeInfo.description}}</p>
+                     <a href="#" class="btn btn-primary">Add Book!</a>
+                </div>
+            </div>
+                <br>
+             {{/each}} 
+        </div>
+    </div>
+</div>
+
