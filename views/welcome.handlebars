@@ -1,0 +1,18 @@
+<div id="main-container" class="container">
+<div class="jumbotron text-center header-wrap" align="center">
+    <img src="../public/images/login.jpg" alt="logo" class="mb-4" style="width:210px;">
+    <p class="lead">Welcome to <strong>Book Wars</strong> where you can rate and browse any book.</p>
+    <hr class="my-4">
+    <p class="lead">Start your search or rate a Book.</p>
+    <div>
+        {{#if isloggedin}}
+            <a href="/logout"> <button type="btn" class="btn-index">Logout</button></a>
+        {{else}}
+            <a href="/signin"></a><button type="submit" id="sign-in-modal" class="btn-index">Sign In!</button>
+            <a href="/signup"></a><button type="submit" id="sign-up" class="btn-index">Sign Up!</button>
+        {{/if}}
+        
+    </div>
+</div>
+</div>
+ 

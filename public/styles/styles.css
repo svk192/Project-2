@@ -1,15 +1,8 @@
-/* .list-group-item {
-  line-height: 2.5;
-} */
-
 body {
-  /* background-color: red; */
-  background-image: url("../images/book2.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  border-image-repeat: no-repeat;
+    background:url("../images/login.jpg") repeat center fixed;
+    color: white;
+    background-size: cover;
+    height:100%
 }
 
 #welcome {
@@ -64,4 +57,13 @@ h2 {
 
 label {
   margin-right: 1%;
+}
+.modal{
+    color:black;
+}
+
+.btn-index {
+  color:white;
+  background:#00adb5;
+  border: 1px solid white;
 }

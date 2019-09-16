@@ -1,31 +1,10 @@
 const db = require("../models");
+const passport = require("passport");
 
 module.exports = function(app) {
-  // Each of the below routes just handles the HTML page that the user gets sent to.
-  //signup page
-  // app.get("/", function(req, res) {
-  //   //res.send("Welcome to Passport with Sequelize");
-  //   //res.sendFile(path.join(__dirname, "../SignUp.hbs"));
-  //   res.render("SignUp");
-  // });
-
-  //load login
   app.get("/", function(req, res) {
     //res.send("Welcome to Passport with Sequelize");
-    res.render("SignIn");
-  });
-//   app.get("/", function(req, res) {
-//     db.Example.findAll({}).then(function(dbExamples) {
-//       res.render("index", {
-//     //     msg: "Welcome!",
-//     //     examples: dbExamples
-//     //   });
-//     // });
-//   });
-
-// load index page - no database call required
-  app.get("/welcome", function(req, res) {
-    res.render("index");
+    res.render("signup");
   });
 
   // Load top rated page - database call required 
@@ -44,18 +23,25 @@ module.exports = function(app) {
 
   // load results page - database call required
   app.get("/rate", function(req, res) {
-    res.redner("results");
+    res.render("results");
   });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
-};
 
-getBook: function() {
+//logout user
+app.get('/logout', function(req, res) {
+  req.session.destroy(function(err){
+    req.logout();
+    res.redirect('/');
+  })
+});
+function getBook() {
   return $.ajax({
     url: "/topTest",
     type: "GET"
   });
 }
+};

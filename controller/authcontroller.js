@@ -1,11 +1,10 @@
 var exports = (module.exports = {});
-
-exports.register = function(req, res) {
-  res.render("register");
+exports.signup = function(req, res) {
+  res.render("signup");
 };
 
-exports.login = function(req, res) {
-  res.render("login");
+exports.signin = function(req, res) {
+  res.render("signin");
 };
 
 exports.index = function(req, res) {
@@ -14,8 +13,6 @@ exports.index = function(req, res) {
 
 exports.logout = function(req, res) {
   req.session.destroy(function(err) {
-    // eslint-disable-next-line curly
-    if (err) throw err;
     res.redirect("/");
   });
 };

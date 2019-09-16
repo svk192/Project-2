@@ -1,34 +1,37 @@
-const authController = require('../controllers/authcontroller.js');
+var authController = require("../controller/authcontroller.js");
 
-module.exports = function(app,passport){
-// Register Page
-app.get('/register', authController.register);
+module.exports = function(app, passport) {
+  app.get("/flash", function(req, res) {
+    req.flash("info", "Email already exists. Please sign in!");
+    res.redirect("/");
+  });
 
-// Login Page
-app.get('/login', authController.login);
+  app.get("/", authController.signup);
 
-app.post('/register', passport.authenticate('local-signup',
-  { successRedirect: '/index',
-    failureRedirect: '/signup'}
-  ));
+  app.get("/signin", authController.signin);
 
-app.get('/index',isLoggedIn, authController.index);
+  app.post("/signup",passport.authenticate("local-signup", {
+      successRedirect: "/index",
+      failureRedirect: "/signup"
+    })
+  );
 
-app.get('/logout',authController.logout);
+  app.get("/index", isLoggedIn, authController.index);
 
-app.post('/login', passport.authenticate('local-signin',
-  { successRedirect: '/index',
-    failureRedirect: '/login'}
-  ));
+  app.get("/logout", authController.logout);
 
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
+  app.post(
+    "/signin",
+    passport.authenticate("local-signin", {
+      successRedirect: "/index",
+      failureRedirect: "/signin"
+    })
+  );
 
-    res.redirect('/login');
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect("/signin");
+  }
 }
-
-
-}
-
-
