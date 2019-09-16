@@ -1,16 +1,18 @@
-<div class="container">
-    <div class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="..." class="bookCover" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="bookTitle"><{{bookTitle}}></h5>
-                    <h6 class="bookAuthor">{{bookAuthor}}</h6>
-                    <p class="bookPlot">{{bookPlot}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+<div class="row">
+   <ul>
+     {{#each books}}
+     <li>
+       <h2>{{this.Book.title}}</h2>
+       <h3>Votes: {{this.Count}}</h3>
+       <h3>author: {{this.Book.author}}</h3>
+       <p>description: {{this.Book.description}}</p>
+       <p>isbn_type: {{this.Book.ISBN_type}}</p>
+       <p>isbn_id: {{this.Book.ISBN_ID}}</p>
+       <p>page count: {{this.Book.pageCount}}</p>
+       <p>category: {{this.Book.category}}</p>
+     </li>
+     {{/each}}
+   </ul>
+ </div>
+
