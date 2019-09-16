@@ -7,10 +7,10 @@
             </div>
             <div class="col"> 
                 <div class="card-block px-2">
-                    <h5 class="bookTitle">{{this.volumeInfo.title}}</h5>
+                    <h5 class="bookTitle" } >{{this.volumeInfo.title}}</h5>
                     <h6 class="bookAuthor">{{this.volumeInfo.authors}}</h6>
                     <p class="bookPlot">{{this.volumeInfo.description}}</p>
-                     <a href="#" class="btn btn-primary">Add Book!</a>
+                     <button class="BookButton btn btn-primary" data-idname="{{this.id}}" id="{{this.id}}" data-title="{{this.volumeInfo.title}}"> Add Book!</a>
                 </div>
             </div>
                 <br>
@@ -18,4 +18,3 @@
         </div>
     </div>
 </div>
-

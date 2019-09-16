@@ -8,15 +8,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     author: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     ISBN_type: {
       type: DataTypes.STRING
@@ -26,23 +26,23 @@ module.exports = function(sequelize, DataTypes) {
     },
     pageCount: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     smallThumbnail: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     Thumbnail: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     APIID: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     }
   }, {
     timestamps: false

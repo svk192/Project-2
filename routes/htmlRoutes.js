@@ -44,9 +44,10 @@ module.exports = function(app) {
   // Load top rated page - database call required 
   app.get("/top-rated", function(req, res) {
     // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+
       axios
       .get('http://localhost:3000/topTest')
-      .then(foundBooks => {console.log(foundBooks.data)
+      .then(foundBooks => {
         res.render('results', {books: foundBooks.data})})
       .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
     // res.render('index');
@@ -59,7 +60,7 @@ module.exports = function(app) {
   });
   //load results page
   app.post("/results", function(req, res) {
-    // console.log("title:" + req.body.title);
+    //  console.log("title:" + req.body.title);
     // console.log("test");
     // console.log(req.body.title);
     var query = req.body.title;
@@ -79,13 +80,58 @@ module.exports = function(app) {
         //   console.log("authors:" + books[i].volumeInfo.authors);
         //   console.log("description:" + books[i].volumeInfo.description);
         //   console.log("image:" + books[i].volumeInfo.imageLinks.smallThumbnail);
-        console.log(books)
+
+        
         res.render("searchResults", {
           books
         });
         // }
       });
   });
+
+
+  app.get("/api/getABook/:id", function(req, res) {
+    
+    var query = req.params.id
+    console.log(query)
+
+    var Book = {
+      title: "placeholder",
+      author: "placeholder",
+      description: "placeholder",
+      ISBN_type: "placeholder",
+      ISBN_ID: -1,
+      category: "placeholder",
+      smallThumbnail: "placeholder",
+      Thumbnail: "placeholder",
+      pageCount: "placeholder",
+      APIID: query
+    }
+      
+    axios
+      .get("https://www.googleapis.com/books/v1/volumes?q=" + query+ "&max-results=5")
+      .then(function(response) {
+        // console.log("Here in HTML: " + response.data)
+        var books = response.data.items;
+        console.log(books)
+        
+          Book.title= books[0].volumeInfo.title,
+          Book.author= books[0].volumeInfo.authors[0],
+          Book.description= books[0].volumeInfo.description,
+          Book.ISBN_type= books[0].volumeInfo.ISBN_type,
+          Book.ISBN_ID= books[0].volumeInfo.ISBN_ID,
+          Book.category= books[0].volumeInfo.category,
+          Book.smallThumbnail= books[0].volumeInfo.imageLinks.smallThumbnail,
+          Book.Thumbnail= books[0].volumeInfo.imageLinks.thumbnail,
+          Book.pageCount= books[0].volumeInfo.pageCount,
+          // Book.APIID =books[0].volumeInfo.Id
+        
+
+        console.log(Book)
+        //  console.log("Here in HTML: " + Book)
+        res.send(Book)
+      });
+  }); 
 
   // load results page - database call required
   app.get("/rate", function(req, res) {
@@ -98,4 +144,6 @@ module.exports = function(app) {
   app.get("*", function(req, res) {
     res.render("404");
   });
+
+
 };
