@@ -1,5 +1,6 @@
 var db = require("../models");
 var sequelize = require("sequelize");
+// var axios = require("axios");
 
 module.exports = function(app) {
   // Get all examples
@@ -43,4 +44,24 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
+  app.post("/api/addBook", function(req, res) {
+    console.log(req.body);
+    db.Book.create({
+      title: req.body.title,
+      author: req.body.author,
+      description: req.body.description,
+      ISBN_type: req.body.ISBN_type,
+      ISBN_ID: req.body.ISBN_ID,
+      pageCount: req.body.pageCount,
+      category: req.body.category,
+      smallThumbnail: req.body.smallThumbnail,
+      Thumbnail: req.body.Thumbnail,
+      APIID: req.body.APIID
+    }).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+
+
 };
