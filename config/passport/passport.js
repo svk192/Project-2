@@ -2,7 +2,7 @@
 const bCrypt = require("bcrypt");
 
 module.exports = function(passport,user){
-  const User = user;
+  var User = user;
   const LocalStrategy = require("passport-local").Strategy;
 
   passport.serializeUser(function(user, done) {
@@ -11,7 +11,7 @@ module.exports = function(passport,user){
 
   // used to deserialize the user
   passport.deserializeUser(function(id, done) {
-    User.findById(id).then(function(user) {
+    User.findByPk(id).then(function(user) {
       if(user){
         done(null, user.get());
       }
@@ -43,8 +43,9 @@ function(req, email, password, done) {
         var data = {
           email: email,
           password: userPassword,
-          name: req.body.name,
+          username: req.body.username,
           };
+          console.log(data)
         User.create(data).then(function(newUser, created) {
           if(!newUser){
             return done(null,false);

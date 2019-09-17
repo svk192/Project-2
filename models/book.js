@@ -43,8 +43,8 @@ module.exports = function(sequelize, DataTypes) {
     APIID: {
       type: DataTypes.STRING,
       allowNull: true
-    }
-  })
+    },
+  },{ freezeTableName: true, timestamps: false })
   Book.associate = function(models) {
     Book.hasMany(models.userBook);
   };

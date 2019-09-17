@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     },
-    { timestamps: false }
+    { freezeTableName: true, timestamps: false }
   );
   //Check association
   userBook.associate = function(models) {

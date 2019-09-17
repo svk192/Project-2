@@ -13,11 +13,6 @@ var sequelize = require("sequelize");
 
 
 module.exports = function(app) {
-  app.get("/", function(req, res) {
-    //res.send("Welcome to Passport with Sequelize");
-    res.render("signup");
-  });
-
   // Load top rated page - database call required 
   app.get("/top-rated", function(req, res) {
     // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
