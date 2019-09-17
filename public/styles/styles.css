@@ -73,3 +73,12 @@ label {
 #resultListing {
   padding: 2%;
 }
+
+#logout {
+  padding: 1%;
+}
+
+.nav-link {
+  color: black;
+  font-size: 1rem;
+}
