@@ -48,7 +48,7 @@ module.exports = function(app) {
       axios
       .get('http://localhost:3000/topTest')
       .then(foundBooks => {
-        res.render('results', {books: foundBooks.data})})
+        res.render('searchResults', {books: foundBooks.data})})
       .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
     // res.render('index');
   });

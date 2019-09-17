@@ -3,13 +3,17 @@
 } */
 
 body {
-  /* background-color: red; */
   background-image: url("../images/book2.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   border-image-repeat: no-repeat;
+}
+
+#errorMessage {
+  padding-top: 5%;
+  padding-left: 2%;
 }
 
 #welcome {
@@ -64,4 +68,8 @@ h2 {
 
 label {
   margin-right: 1%;
+}
+
+#resultListing {
+  padding: 2%;
 }

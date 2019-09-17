@@ -1,4 +1,5 @@
 <div class="container"> 
+    <h2>Book Results</h2>
            {{#each books}}  
           <div class="card">
         <div class="row no-gutters">
@@ -7,13 +8,16 @@
             </div>
             <div class="col"> 
                 <div class="card-block px-2">
-                    <h5 class="bookTitle" } >{{this.volumeInfo.title}}</h5>
+                    <h5 class="bookTitle">{{this.volumeInfo.title}}</h5>
                     <h6 class="bookAuthor">{{this.volumeInfo.authors}}</h6>
                     <p class="bookPlot">{{this.volumeInfo.description}}</p>
                      <button class="BookButton btn btn-primary" data-idname="{{this.id}}" id="{{this.id}}" data-title="{{this.volumeInfo.title}}"> Add Book!</a>
                 </div>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-secondary">&#128077;</button>
+                    <button type="button" class="btn btn-secondary">&#128078;</button>
+                </div>
             </div>
-                <br>
              {{/each}} 
         </div>
     </div>
