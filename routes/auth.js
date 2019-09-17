@@ -6,8 +6,6 @@ app.get('/', authController.welcome);
 
 app.get('/signup', authController.signup);
 
-app.get("*", authController.error);
-
 app.get('/signin', authController.signin);
 
 app.post('/signup', passport.authenticate('local-signup',
