@@ -10,7 +10,9 @@ app.get('/signin', authController.signin);
 
 app.post('/signup', passport.authenticate('local-signup',
   { successRedirect: '/index',
-    failureRedirect: '/signup'}
+    failureRedirect: '/signup'
+    // { messages: req.flash('info') }
+  }
   ));
 
 app.get('/index',isLoggedIn, authController.index);

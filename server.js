@@ -5,12 +5,12 @@ const app = express();
 const passport = require("passport");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
-//const flash = require('connect-flash');
+const flash = require('connect-flash-plus');
 //const cookieParser = require("cookie-parser");
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-//app.use(flash());
+app.use(flash());
 
 app.use(
   session({

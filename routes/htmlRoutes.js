@@ -1,13 +1,13 @@
 const db = require("../models");
-const passport = require("passport");
+//const passport = require("passport");
 
 var express = require("express");
-var bodyParser = require("body-parser");
+//var bodyParser = require("body-parser");
 var app = express();
 // app.use(bodyParser.json());
 app.use(express.urlencoded());
 var axios = require("axios");
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 var sequelize = require("sequelize");
 // import axios from 'axios';
 
@@ -18,9 +18,9 @@ module.exports = function(app) {
     // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
 
       axios
-      .get('http://localhost:3000/topTest')
+      .get('http://localhost:3500/topTest')
       .then(foundBooks => {
-        res.render('results', {books: foundBooks.data})})
+        res.render('searchResults', {books: foundBooks.data})})
       .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
     // res.render('index');
   });
@@ -42,7 +42,7 @@ module.exports = function(app) {
       .then(function(response) {
         var books = response.data.items;
         // for (var i = 0; i < books.length; i++) {
-        // console.log(books[0].volumeInfo.title);
+         console.log(books[0].volumeInfo.title);
         var title = books[0].volumeInfo.title;
         var author = books[0].volumeInfo.authors;
         var plot = books[0].volumeInfo.description;
@@ -52,8 +52,6 @@ module.exports = function(app) {
         //   console.log("authors:" + books[i].volumeInfo.authors);
         //   console.log("description:" + books[i].volumeInfo.description);
         //   console.log("image:" + books[i].volumeInfo.imageLinks.smallThumbnail);
-
-        
         res.render("searchResults", {
           books
         });

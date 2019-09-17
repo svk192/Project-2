@@ -21,7 +21,7 @@ $(document).ready(function() {
           console.log("Pepito made a mistake, please check" + err);
         });
     //   console.log(data);
-    });
+    }).catch(function(error){console.log("This error!!!" + error)});
   }
 
   $BookButton.click(marked);

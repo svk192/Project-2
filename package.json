@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/svk192/Project-2#readme",
   "dependencies": {
+    "ajax": "0.0.4",
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
+    "connect-flash-plus": "^0.2.1",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.2",

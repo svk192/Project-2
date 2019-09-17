@@ -1,4 +1,5 @@
 <div class="container"> 
+    <h2>Book Results</h2>
            {{#each books}}  
           <div class="card">
         <div class="row no-gutters">
@@ -7,16 +8,19 @@
             </div>
             <div class="col"> 
                 <div class="card-block px-2">
-                    <h5 class="bookTitle" } >{{this.volumeInfo.title}}</h5>
+                    <h5 class="bookTitle">{{this.volumeInfo.title}}</h5>
                     <h6 class="bookAuthor">{{this.volumeInfo.authors}}</h6>
                     <p class="bookPlot">{{this.volumeInfo.description}}</p>
                      <button class="BookButton btn btn-primary" data-idname="{{this.id}}" id="{{this.id}}" data-title="{{this.volumeInfo.title}}"> Add Book!</a>
                 </div>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-secondary">&#128077;</button>
+                    <button type="button" class="btn btn-secondary">&#128078;</button>
+                </div>
             </div>
-                <br>
              {{/each}} 
         </div>
     </div>
 </div>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/addbook.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="js/addbook.js" type="text/javascript"></script>
