@@ -1,12 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
-  var userBook = sequelize.define("userBook", {
-    userBookID: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false
-    }
-  }, { timestamps: false });
+  var userBook = sequelize.define(
+    "userBook",
+    {
+      userBookID: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+      }
+    },
+    { freezeTableName: true, timestamps: false }
+  );
   //Check association
   userBook.associate = function(models) {
     userBook.belongsTo(models.user, {
@@ -17,4 +21,4 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
   return userBook;
- };
+};

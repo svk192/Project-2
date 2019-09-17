@@ -3,19 +3,6 @@ var sequelize = require("sequelize");
 // var axios = require("axios");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Book.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.book.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
 
   app.get("/topTest", function(req, res) {
     db.userBook
@@ -46,7 +33,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/addBook", function(req, res) {
-    console.log(req.body);
+    console.log("add book" + req.body);
     db.Book.create({
       title: req.body.title,
       author: req.body.author,
