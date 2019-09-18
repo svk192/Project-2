@@ -10,9 +10,9 @@ app.get('/signin', authController.signin);
 
 app.post('/signup', passport.authenticate('local-signup',
   { successRedirect: '/index',
-    failureRedirect: '/signup'
-    // { messages: req.flash('info') }
-  }
+    failureRedirect: '/signup',
+    failureFlash : true // allow flash messages
+    }
   ));
 
 app.get('/index',isLoggedIn, authController.index);
@@ -21,7 +21,9 @@ app.get('/logout',authController.logout);
 
 app.post('/signin', passport.authenticate('local-signin',
   { successRedirect: '/index',
-    failureRedirect: '/signin'}
+    failureRedirect: '/signin',
+    failureFlash : true
+  }
   ));
 
 function isLoggedIn(req, res, next) {

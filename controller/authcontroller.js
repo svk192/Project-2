@@ -4,11 +4,11 @@ exports.welcome = function(req, res) {
 };
 
 exports.signup = function(req, res) {
-  res.render("signup");
+  res.render("signup", { message: req.flash('signupMessage')});
 };
 
 exports.signin = function(req, res) {
-  res.render("signin");
+  res.render("signin", { message: req.flash('signinMessage')});
 };
 
 exports.index = function(req, res) {

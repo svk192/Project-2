@@ -34,9 +34,7 @@ function(req, email, password, done) {
   };
   User.findOne({where: {email:email}}).then(function(user){
     if (user) {
-      return done(null, false, {
-      message: "That email is already taken"
-      });
+      return done(null, false, req.flash("signupMessage","That email is already taken"));
     } 
     else {
         var userPassword = generateHash(password);
@@ -74,16 +72,16 @@ function(req, email, password, done) {
       };;
     User.findOne({ where : { email: email}}).then(function (user) {
       if (!user) {
-        return done(null, false, { message: "Email does not exist" });
+        return done(null, false, req.flash("signinMessage","Email does not exist"));
         }
       if (!isValidPassword(user.password,password)) {
-        return done(null, false, { message: "Incorrect password." });
+        return done(null, false, req.flash("signinMessage", "Incorrect password."));
       }
       var userinfo = user.get();
       return done(null,userinfo);
       }).catch(function(err) {
           console.log("Error:", err);
-          return done(null, false, { message: "Something went wrong with your Signin" });
+          return done(null, false, req.flash("signinMessage", "Something went wrong with your Signin"));
          });
     }
     )

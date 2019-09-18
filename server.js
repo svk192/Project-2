@@ -6,17 +6,20 @@ const passport = require("passport");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const flash = require('connect-flash-plus');
-//const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+// Using the flash middleware provided by connect-flash to store messages in session
+ // and displaying in templates
 app.use(flash());
 
 app.use(
   session({
     secret: "keyboard cat",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    //cookie: { secure: true }
   })
 );
 app.use(passport.initialize());
