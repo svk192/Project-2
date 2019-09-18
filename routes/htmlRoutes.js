@@ -1,52 +1,24 @@
-var db = require("../models");
+const db = require("../models");
+//const passport = require("passport");
 
 var express = require("express");
-var bodyParser = require("body-parser");
+//var bodyParser = require("body-parser");
 var app = express();
 // app.use(bodyParser.json());
 app.use(express.urlencoded());
 var axios = require("axios");
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 var sequelize = require("sequelize");
 // import axios from 'axios';
 
 
 module.exports = function(app) {
-  // Each of the below routes just handles the HTML page that the user gets sent to.
-  //signup page
-  // app.get("/", function(req, res) {
-  //   //res.send("Welcome to Passport with Sequelize");
-  //   //res.sendFile(path.join(__dirname, "../SignUp.hbs"));
-  //   res.render("SignUp");
-  // });
-
-  //load login
-  app.get("/", function(req, res) {
-    //res.send("Welcome to Passport with Sequelize");
-    res.render("SignIn");
-  });
-
-  //   app.get("/", function(req, res) {
-  //     db.Example.findAll({}).then(function(dbExamples) {
-  //       res.render("index", {
-  //     //     msg: "Welcome!",
-  //     //     examples: dbExamples
-  //     //   });
-  //     // });
-  //   });
-
-  // load index page
-
-  app.get("/welcome", function(req, res) {
-    res.render("index");
-  });
-
   // Load top rated page - database call required 
   app.get("/top-rated", function(req, res) {
     // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
 
       axios
-      .get('http://localhost:3000/topTest')
+      .get('http://localhost:3500/topTest')
       .then(foundBooks => {
         res.render('searchResults', {books: foundBooks.data})})
       .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
@@ -70,7 +42,7 @@ module.exports = function(app) {
       .then(function(response) {
         var books = response.data.items;
         // for (var i = 0; i < books.length; i++) {
-        // console.log(books[0].volumeInfo.title);
+         console.log(books[0].volumeInfo.title);
         var title = books[0].volumeInfo.title;
         var author = books[0].volumeInfo.authors;
         var plot = books[0].volumeInfo.description;
@@ -80,8 +52,6 @@ module.exports = function(app) {
         //   console.log("authors:" + books[i].volumeInfo.authors);
         //   console.log("description:" + books[i].volumeInfo.description);
         //   console.log("image:" + books[i].volumeInfo.imageLinks.smallThumbnail);
-
-        
         res.render("searchResults", {
           books
         });
@@ -145,5 +115,11 @@ module.exports = function(app) {
     res.render("404");
   });
 
-
+//logout user
+app.get('/logout', function(req, res) {
+  req.session.destroy(function(err){
+    req.logout();
+    res.redirect('/');
+  })
+});
 };

@@ -20,8 +20,8 @@ $(document).ready(function() {
         .catch(function err(err) {
           console.log("Pepito made a mistake, please check" + err);
         });
-    //   console.log(data);
-    });
+      console.log("userid"+ this.userid)
+    }).catch(function(error){console.log("This error!!!" + error)});
   }
 
   $BookButton.click(marked);

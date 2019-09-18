@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
+      unique:true,
       autoIncrement: true
     },
     title: {
@@ -43,14 +44,10 @@ module.exports = function(sequelize, DataTypes) {
     APIID: {
       type: DataTypes.STRING,
       allowNull: true
-    }
-  }, {
-    timestamps: false
-  });
-
+    },
+  },{ freezeTableName: true, timestamps: false })
   Book.associate = function(models) {
     Book.hasMany(models.userBook);
   };
-
   return Book;
 };

@@ -1,21 +1,17 @@
-require("dotenv").config();
-var express = require("express");
-var exphbs = require("express-handlebars");
-var passport = require("passport");
-var session = require("express-session");
-var app = express();
+//require("dotenv").config();
+//Dependencies
+const express = require("express");
+const app = express();
+const passport = require("passport");
+const session = require("express-session");
+const exphbs = require("express-handlebars");
+const flash = require('connect-flash-plus');
+//const cookieParser = require("cookie-parser");
 
-
-var PORT = process.env.PORT || 3000;
-//For express(includes BodyParser)
-app.use(
-  express.urlencoded({
-    extended: true
-  })
-);
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(flash());
 
-// For Passport
 app.use(
   session({
     secret: "keyboard cat",
@@ -23,44 +19,35 @@ app.use(
     saveUninitialized: true
   })
 );
-// session secret
 app.use(passport.initialize());
 // persistent login sessions
 app.use(passport.session());
 
 // For Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
+app.engine("handlebars",exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
+
+
+const PORT = process.env.PORT || 3500;
+
+const db = require("./models");
 
 // Express static assets
 app.use(express.static("public"));
+var authRoute = require("./routes/auth")(app, passport);
+require("./config/passport/passport.js")(passport, db.user);
 
-// Routes
-// var authRoute = require("./routes/auth")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-// require("./config");
-
-//Models
-var models = require("./models");
-
-//Sync Database
-models.sequelize
-  .sync({force: true})
-  .then(function() {
-    console.log("Nice! Database looks fine");
+//Sync Database 
+db.sequelize.sync({}).then(function() {
+    console.log("Hurray! Database looks good");
   })
   .catch(function(err) {
-    console.log(err, "Something went wrong with the Database Update!");
+    console.log(err, "Meh..Something went wrong with the Database!");
   });
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
+
 if (process.env.NODE_ENV === "development") {
   syncOptions.force = true;
 }
@@ -68,8 +55,7 @@ app.listen(PORT, function(err) {
   if (!err) {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
+      PORT,PORT
     );
   } else {
     console.log(err);
@@ -77,3 +63,5 @@ app.listen(PORT, function(err) {
 });
 
 module.exports = app;
+
+// req.flash is the way to set flashdata using connect-flash
