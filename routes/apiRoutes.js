@@ -1,6 +1,5 @@
 var db = require("../models");
 var sequelize = require("sequelize");
-// var axios = require("axios");
 module.exports = function(app) {
  app.get("/topTest", function(req, res) {
    db.userBook

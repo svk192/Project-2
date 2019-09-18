@@ -1,6 +1,4 @@
-var db = require("../models");
 var authController = require('../controller/authcontroller.js');
-
 module.exports = function(app,passport){
 app.get('/', authController.welcome);
 
@@ -14,7 +12,6 @@ app.post('/signup', passport.authenticate('local-signup',
     failureFlash : true // allow flash messages
     }
   ));
-
 app.get('/index',isLoggedIn, authController.index);
 
 app.get('/logout',authController.logout);
