@@ -52,9 +52,7 @@ module.exports = function(app) {
         //   console.log("authors:" + books[i].volumeInfo.authors);
         //   console.log("description:" + books[i].volumeInfo.description);
         //   console.log("image:" + books[i].volumeInfo.imageLinks.smallThumbnail);
-        res.render("searchResults", {
-          books
-        });
+        res.render("searchResults", {books});
         // }
       });
   });
