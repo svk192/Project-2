@@ -73,3 +73,7 @@ label {
 #resultListing {
   padding: 2%;
 }
+
+#results {
+  border-radius: 1%;
+}
