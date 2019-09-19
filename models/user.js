@@ -2,12 +2,12 @@ module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define(
     "user",
     {
-      user_ID: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
       },
-      name: {
+      username: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -29,4 +29,4 @@ module.exports = function(sequelize, DataTypes) {
     user.hasMany(models.userBook);
   };
   return user;
- };
+};
