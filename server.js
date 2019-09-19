@@ -50,7 +50,10 @@ db.sequelize.sync({}).then(function() {
     console.log(err, "Meh..Something went wrong with the Database!");
   });
 
-if (process.env.NODE_ENV === "development") {
+// if (process.env.NODE_ENV === "development") {
+//   syncOptions.force = true;
+// }
+if (process.env.NODE_ENV === "production") {
   syncOptions.force = true;
 }
 app.listen(PORT, function(err) {
