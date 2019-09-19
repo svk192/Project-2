@@ -28,11 +28,19 @@ body {
   background-color: #10083F;
 }
 
+#button1:hover {
+  background-color: darkred;
+}
+
 #button2 {
   border-radius: 25%;
   padding: 8%;
   width: 80%;
   background-color: #10083F;
+}
+
+#button2:hover {
+  background-color: darkred;
 }
 
 a {
@@ -73,9 +81,15 @@ label {
   color:white;
   background:#00adb5;
   border: 1px solid white;
+}
 
 #resultListing {
   padding: 2%;
+}
+
+
+#results {
+  border-radius: 1%;
 }
 
 #logout {
@@ -87,9 +101,60 @@ label {
   font-size: 1rem;
 }
 
+.nav-link:hover {
+  color:darkred;
+}
+
 img {
   border-radius: 50%;
   width: 50%;
   height: 50%;
   padding: 2%;
+}
+
+#addBook {
+  background-color: #10083F;
+  border: none;
+}
+
+#addBook:hover {
+  background-color: darkred;
+  border: none;
+}
+
+ /*signin/signup modal btn styling  */
+#sign-up {
+  background-color: #10083F;
+}
+
+#sign-up:hover{
+  background-color: darkred;
+}
+
+#sign-in-modal {
+  background-color: #10083F;
+}
+
+#sign-in-modal:hover{
+  background-color: darkred;
+}
+
+#submitbtn {
+  background-color: #10083F;
+  color: white;
+}
+
+#submitbtn:hover {
+  background-color: darkred;
+  color: white;
+}
+
+#bookAdded {
+  background-color: #10083F;
+  border: none;
+}
+
+#bookAdded:hover {
+  background-color: darkred;
+  border: none;
 }
