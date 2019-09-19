@@ -18,7 +18,7 @@ app.use(
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: true }
+    //cookie: { secure: true }
   })
 );
 app.use(passport.initialize());
@@ -43,7 +43,7 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 //Sync Database 
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync({}).then(function() {
     console.log("Hurray! Database looks good");
   })
   .catch(function(err) {
