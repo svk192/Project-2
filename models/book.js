@@ -47,8 +47,7 @@ module.exports = function(sequelize, DataTypes) {
     },
   },{ freezeTableName: true, timestamps: false })
   Book.associate = function(models) {
-    //Book.hasMany(models.userBook);
-    Book.hasMany(models.userBook, { onDelete: 'SET NULL', onUpdate: 'CASCADE' });
+    Book.hasMany(models.userBook);
   };
   return Book;
 };

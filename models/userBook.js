@@ -13,22 +13,13 @@ module.exports = function(sequelize, DataTypes) {
   );
   //Check association
   userBook.associate = function(models) {
-    // userBook.belongsTo(models.user, {
-    //   foreignKey: { allowNull: false }
-    // });
     userBook.belongsTo(models.user, {
-      foreignKey: { allowNull: false },
-      onDelete: 'SET NULL',
-       onUpdate: 'CASCADE'
+      foreignKey: { allowNull: false }
     });
-    // userBook.belongsTo(models.Book, {
-    //   foreignKey: { allowNull: false }
-    // });
     userBook.belongsTo(models.Book, {
-      foreignKey: { allowNull: false },
-      onDelete: 'SET NULL',
-       onUpdate: 'CASCADE'
+      foreignKey: { allowNull: false }
     });
+
   };
   return userBook;
 };
