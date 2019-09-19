@@ -18,7 +18,7 @@ app.use(
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
-    //cookie: { secure: true }
+    cookie: { secure: true }
   })
 );
 app.use(passport.initialize());
@@ -50,12 +50,10 @@ db.sequelize.sync({}).then(function() {
     console.log(err, "Meh..Something went wrong with the Database!");
   });
 
-// if (process.env.NODE_ENV === "development") {
-//   syncOptions.force = true;
-// }
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "development") {
   syncOptions.force = true;
 }
+
 app.listen(PORT, function(err) {
   if (!err) {
     console.log(
