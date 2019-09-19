@@ -88,9 +88,6 @@ function upvoted(){
      userID: 1
    }
 
-   
-
-
    API.saveUpVote(userBookdata).then(function(res){
     console.log(res)
 

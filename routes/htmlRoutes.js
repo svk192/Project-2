@@ -1,15 +1,15 @@
 const axios = require("axios");
 module.exports = function(app) {
   // Load top rated page - database call required 
-  app.get("/top-rated", function(req, res) {
-    // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      axios
-      .get('http://localhost:3500/topTest')
-      .then(foundBooks => {
-        res.render('searchResults', {books: foundBooks.data})})
-      .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
-    // res.render('index');
-  });
+  // app.get("/top-rated", function(req, res) {
+  //   // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+  //     axios
+  //     .get('http://localhost:3500/topTest')
+  //     .then(foundBooks => {
+  //       res.render('searchResults', {books: foundBooks.data})})
+  //     .catch(function err(err){ console.log('Pepito made a mistake, please check' + err)});
+  //   // res.render('index');
+  // });
 
   // load rate page 
   app.get("/lookup", function(req, res) {

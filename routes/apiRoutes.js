@@ -1,26 +1,28 @@
 var db = require("../models");
 var sequelize = require("sequelize");
 module.exports = function(app) {
- app.get("/topTest", function(req, res) {
-   db.userBook
-     .findAll({
-       include: [
-         {
-           model: db.Book,
-           required: true
-         }
-       ],
-       group: ["BookBookID"],
-       attributes: [
-         "BookBookID",
-         [sequelize.fn("COUNT", "BookBookID"), "Count"]
-       ]
-     })
-     .then(function(UserBook) {
-       console.log("TopTest works");
-       res.json(UserBook);
-     });
- });
+  app.get("/top-rated", function (req, res) {
+    db.userBook
+      .findOne({
+        include: 
+        [  
+          {
+            model: db.Book,
+            required: true
+          }  
+        ],
+        group: ["BookBookID"],
+        attributes: [
+          "BookBookID",
+          [sequelize.fn("COUNT", "BookBookID"), "Count"]
+        ],
+        order: sequelize.literal('count DESC')
+          })
+      .then(function (response) {
+        // console.log(response.dataValues)
+        res.render('results', response.dataValues)
+      })
+  });
  // Delete an example by id
  app.delete("/api/examples/:id", function(req, res) {
    db.book.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
@@ -34,8 +36,32 @@ module.exports = function(app) {
       console.log(dbExample.book_Id)
       res.json(dbExample);
     }); 
+  })
 
- });
+    app.get("/api/all", function(req, res) {
+     
+      db.userBook
+      .findAll({
+        include: 
+        [  
+          {
+            model: db.Book,
+            required: false
+          }  
+        ],
+        group: ["BookBookID"],
+        attributes: [
+          "BookBookID",
+          [sequelize.fn("COUNT", "BookBookID"), "Count"]
+        ],
+        order: sequelize.literal('count DESC')
+          })
+      .then(function (response) {
+        console.log(response.dataValues)
+        res.send(response)
+      })
+   });
+
  app.post("/api/addBook", function(req, res) {
    console.log("add book" + req.body);
    db.Book.create({
