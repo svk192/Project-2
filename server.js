@@ -43,7 +43,7 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 //Sync Database 
-db.sequelize.sync({}).then(function() {
+db.sequelize.sync({force: true}).then(function() {
     console.log("Hurray! Database looks good");
   })
   .catch(function(err) {
