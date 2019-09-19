@@ -26,7 +26,8 @@ module.exports = function(sequelize, DataTypes) {
     { freezeTableName: true, timestamps: false }
   );
   user.associate = function(models) {
-    user.hasMany(models.userBook);
+    //user.hasMany(models.userBook);
+    user.hasMany(models.userBook, { onDelete: 'SET NULL', onUpdate: 'CASCADE' });
   };
   return user;
 };
