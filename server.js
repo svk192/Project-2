@@ -1,11 +1,10 @@
-//require("dotenv").config();
-//Dependencies
+require('dotenv').config()//Dependencies
 const express = require("express");
 const app = express();
 const passport = require("passport");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
-const flash = require('connect-flash-plus');
+const flash = require("connect-flash-plus");
 const cookieParser = require("cookie-parser");
 
 app.use(express.urlencoded({extended: true}));

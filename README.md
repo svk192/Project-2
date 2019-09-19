@@ -53,13 +53,14 @@ Contributions:
 ```
 Contributions:
   - Passport.js configuration for authentication functionality 
+  - connect-flash for validation errors
   - Frontend connectivity 
+  - Database configuration 
 ```
 ##### Saba Khan (svk192)
 ```
 Contributions:
   - Heroku configuration
-  - Database configuration 
   - API configuration and calls
   - Voting logic
   - Frontend configuration
